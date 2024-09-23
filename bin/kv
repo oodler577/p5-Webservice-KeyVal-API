@@ -28,10 +28,24 @@ $subcommand,
 ;
 #<<<
 
+# TODO:
+# 1.  accept value via STDIN with trailing '-' to indicated,
+#       $ process | kv -v -
+# 2.  check for max key or value length of 101 (determined empirically)
+# 3. ..?
+#
+
 sub do_set {
    my ($ARGV) = @_;
 
    my $o      = Getopt2h2o $ARGV, {}, qw/key|k=s val|v=s/;
+
+   if ($o->val eq "-") {
+     local $/;
+     my $input = <STDIN>;
+     chomp $input;
+     $o->val($input);
+   }
 
    local $@;
    my $resp = eval { $client->set($o->key => $o->val) } or undef;
@@ -53,7 +67,7 @@ sub do_get {
 }
 
 sub do_help {
-    warn "kv! subcommand may be one of the following: 'set', 'help', (prints this!)\n";
+    warn "kv! subcommand may be one of the following: 'set', 'get', 'help' - (prints this!)\n";
 }
 
 __END__
