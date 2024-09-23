@@ -217,12 +217,18 @@ has been noted that:
 
 =over 4
 
-=item the API always returns C<200 OK>; to check if the call succeeded or failed, one
+=item HTTP Status
+
+the API always returns C<200 OK> to check if the call succeeded or failed, one
 must check the C<status> field.
 
-=item keys and values are limited to 101 characters each
+=item Length limits
 
-=item it is almost always to just send the value and not specify a key, the chances
+keys and values are limited to 101 characters each
+
+=item Don't specify key names
+
+it is almost always to just send the value and not specify a key, the chances
 of collision with existing keys is high; better to let the webservice give you the
 GUID it can return; this will always be ok unless the value sent is greater than 101
 characters
