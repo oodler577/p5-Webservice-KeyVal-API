@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use URI::Escape qw/uri_escape/;
 
-our $VERSION = '0.9.8';
+our $VERSION = '0.9.9';
 
 use HTTP::Tiny;
 use JSON            qw/decode_json/;
@@ -74,9 +74,9 @@ __END__
 
 =head1 NAME
 
-Webserver::KeyVal::API - Perl API client for the REPLACE API service, L<https://keyval.org/>.
+Webserver::KeyVal::API - Perl API client for the C<KeyVal> service, L<https://keyval.org/>.
 
-This module provides the client, "REPLACE", that is available via C<PATH> after install.
+This module provides the client, C<kv>, that is available via C<PATH> after install.
 
 =head1 SYNOPSIS
 
@@ -97,9 +97,9 @@ This module provides the client, "REPLACE", that is available via C<PATH> after 
   $resp = $client->get($key);                     # can die
   printf "%s %s\n", $resp->key, $resp->val;
 
-=head2 C<REPLACE> Commandline Client
+=head2 C<kv> Commandline Client
 
-After installing this module, simply run the command C<fletch> without any argum
+After installing this module, simply run the command C<kv> without any argum
 ents to get a URL for a random dog image. See below for all subcommands.
 
   shell> kv -k mykey -v "this is a value..."  # note: key and value are limited to 101 charactersR
@@ -122,7 +122,7 @@ ents to get a URL for a random dog image. See below for all subcommands.
 
 =head1 DESCRIPTION
 
-This is the Perl API for the REPLACE API, profiled at L<https://www.freepublicapis.com/REPLACE>. 
+This is the Perl API for the C<KeyVal>, profiled at L<https://www.freepublicapis.com/keyval-api>. 
 
 Contributed as part of the B<FreePublicPerlAPIs> Project described at,
 L<https://github.com/oodler577/FreePublicPerlAPIs>.
