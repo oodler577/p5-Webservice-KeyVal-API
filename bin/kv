@@ -49,7 +49,7 @@ sub do_get {
    my $resp = eval { $client->get($o->key) } or undef;
    die $@ if not $resp;
 
-   printf "%s\n", $resp->val;
+   printf "%s %s\n", $resp->key, $resp->val;
 }
 
 sub do_help {

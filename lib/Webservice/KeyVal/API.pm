@@ -22,13 +22,14 @@ sub new {
 }
 
 sub set {
-    my $self   = shift;
-    my @kv = @_; # looking for, "key => val"
+    my $self = shift;
 
-    my $key = uri_escape $kv[0];
-    my $val = uri_escape $kv[1];
+    my ($key, $val) = @_; # looking for, "key => val"
 
-    my $URL    = sprintf "%s/set/%s/%s", BASEURL, $key, $val;
+    $key  = ($key) ? uri_escape $key : "-";
+    $val  = uri_escape $val;
+
+    my $URL  = sprintf "%s/set/%s/%s", BASEURL, $key, $val; # provides a unique key name
 
     my $resp =  HTTPTiny2h2o $self->ua->get($URL);
 
